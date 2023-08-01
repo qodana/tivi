@@ -45,27 +45,24 @@ gradleEnterprise {
         }
     }
 }
-
-buildCache {
-    val remoteBuildCacheUrl = extra["REMOTE_BUILD_CACHE_URL"] ?: return@buildCache
-    val isCi = System.getenv().containsKey("CI")
-
-    local {
-        isEnabled = !isCi
-    }
-
-    remote(HttpBuildCache::class) {
-        url = uri(remoteBuildCacheUrl)
-        isPush = isCi
-
-        println("Enabling remote build cache. URL: $url. Push enabled: $isPush")
-
-        credentials {
-            username = extra["REMOTE_BUILD_CACHE_USERNAME"]?.toString()
-            password = extra["REMOTE_BUILD_CACHE_PASSWORD"]?.toString()
-        }
-    }
-}
+//buildCache {
+//    val remoteBuildCacheUrl = extra["REMOTE_BUILD_CACHE_URL"] ?: return@buildCache
+//    val isCi = System.getenv().containsKey("CI")
+//
+//    local {
+//        isEnabled = !isCi
+//    }
+//
+//    remote(HttpBuildCache::class) {
+//        url = uri(remoteBuildCacheUrl)
+//        isPush = isCi
+//
+//        credentials {
+//            username = extra["REMOTE_BUILD_CACHE_USERNAME"]?.toString()
+//            password = extra["REMOTE_BUILD_CACHE_PASSWORD"]?.toString()
+//        }
+//    }
+//}
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 // https://docs.gradle.org/7.6/userguide/configuration_cache.html#config_cache:stable
